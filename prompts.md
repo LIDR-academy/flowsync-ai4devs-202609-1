@@ -1,35 +1,24 @@
 # Prompts
 
-Aquí van **todos los prompts que lanzaste** para hacer el ejercicio, en el orden en que los
-lanzaste, con el modelo y la herramienta de cada uno.
-
-Esto no es papeleo. Lo que se revisa es **cómo pediste las cosas**, no solo lo que salió: un
-resultado flojo con un prompt bueno y un resultado flojo con un prompt vago necesitan feedback
-distinto, y sin este archivo no se distinguen.
-
-## Cómo rellenarlo
-
-- Un apartado `## Prompt N` por cada prompt.
-- **Pega el prompt tal cual lo lanzaste**, dentro del bloque de código, aunque ocupe diez líneas
-  y aunque tenga faltas. No lo reescribas para que quede bien: el que arreglaste mentalmente
-  después no es el que lanzaste.
-- Incluye también los que **no funcionaron**. Suelen ser los más útiles de leer.
-- `Modelo` y `Herramienta` en todos. Si cambiaste de una a otra a mitad, se nota aquí.
-
-Borra el ejemplo de abajo cuando escribas el primero.
-
----
-
 ## Prompt 1
+- **Herramienta:** GitHub Copilot (Eclipse - Agent)
+- **Modelo:** Auto 
+- **Pega el prompt tal cual lo lanzaste:**,
+  Crea un formulario con los siguientes campos nombres y apellidos, ciuadad y telefono, un boton crear y otro consultar
+- ***no funcionaron:**. No tuvo encuenta las instrucciones
 
-**Modelo:** Opus 1M xHigh
-**Herramienta:** Claude Code
 
-```
-Este es el ejemplo. Bórralo.
+## Prompt 2
+- **Herramienta:** GitHub Copilot (Eclipse - Agent)
+- **Modelo:** Auto 
+- **Pega el prompt tal cual lo lanzaste:**,
+   Crea un formulario con los siguientes campos nombres y apellidos, ciuadad y telefono, un boton crear y otro consultar, teniendo encuenta las intrucciones que estan sobre el proyecto
+- ***no funcionaron:**. Sigue sin respetar las instrucciones que igual tenia el Prompt 1, aunque el formulario quedo con mejores estilos
 
-El prompt va aquí dentro, entero y con sus saltos de línea,
-para que se sepa dónde empieza y dónde acaba.
-```
 
-**Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+## Prompt 3
+- **Herramienta:** GitHub Copilot (Eclipse - Agent)
+- **Modelo:** GPT-6 Astra - Medium 
+- **Pega el prompt tal cual lo lanzaste:**,
+   Crea un formulario con los siguientes campos nombres y apellidos, ciuadad y telefono, un boton crear y otro consultar, teniendo encuenta las intrucciones que estan sobre el proyecto /flowsync-ai4devs-202609-1/frontend/.github
+
