@@ -1,3 +1,7 @@
 .adonisjs
 node_modules
 build
+
+# Generado por "node ace migration:run" (lleva su propio DO NOT EDIT).
+# Formatearlo no sirve de nada: la siguiente migración lo reescribe igual.
+database/schema.ts
