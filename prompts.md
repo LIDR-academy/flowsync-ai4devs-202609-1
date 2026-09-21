@@ -22,14 +22,12 @@ Borra el ejemplo de abajo cuando escribas el primero.
 
 ## Prompt 1
 
-**Modelo:** Opus 1M xHigh
+**Modelo:** Claude Sonnet 5
 **Herramienta:** Claude Code
 
 ```
-Este es el ejemplo. Bórralo.
-
-El prompt va aquí dentro, entero y con sus saltos de línea,
-para que se sepa dónde empieza y dónde acaba.
+en la pagina principal, debemos tener una sección los tiquets prioritarios en jira
 ```
 
-**Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+funcionó a la primera, me preguntó si queria obtener los tickets via la api de Jira, 
+le indiqué que los obtubiera via el MCP d claude clode, los bajó y los guardó en un json.

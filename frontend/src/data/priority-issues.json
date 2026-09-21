@@ -1,0 +1,31 @@
+{
+  "source": "https://guaitel.atlassian.net (proyecto FLOW)",
+  "jql": "project = FLOW AND statusCategory != Done ORDER BY priority DESC, created ASC",
+  "fetchedAt": "2026-09-22",
+  "issues": [
+    {
+      "key": "FLOW-1",
+      "summary": "Implementar login en el fronted",
+      "status": "Tareas por hacer",
+      "priority": "High",
+      "type": "Tarea",
+      "assignee": "Xavier Vinardell"
+    },
+    {
+      "key": "FLOW-2",
+      "summary": "Tarea 2",
+      "status": "En curso",
+      "priority": null,
+      "type": "Historia",
+      "assignee": null
+    },
+    {
+      "key": "FLOW-3",
+      "summary": "Subtarea 2.1",
+      "status": "Tareas por hacer",
+      "priority": null,
+      "type": "Subtask",
+      "assignee": null
+    }
+  ]
+}

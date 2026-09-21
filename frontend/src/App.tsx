@@ -3,12 +3,17 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import PriorityIssues from './PriorityIssues.tsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      <PriorityIssues />
+
+      <div className="ticks"></div>
+
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
