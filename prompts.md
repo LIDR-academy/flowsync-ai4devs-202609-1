@@ -22,14 +22,58 @@ Borra el ejemplo de abajo cuando escribas el primero.
 
 ## Prompt 1
 
-**Modelo:** Opus 1M xHigh
+**Modelo:** Sonnet 5, medium effort
 **Herramienta:** Claude Code
 
 ```
-Este es el ejemplo. Bórralo.
-
-El prompt va aquí dentro, entero y con sus saltos de línea,
-para que se sepa dónde empieza y dónde acaba.
+Implementa el ticket FLOW-4 del tablero FlowSync en Jira.
 ```
 
-**Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+**Qué salió:** descartado. Lanzado en la copia pelada a las 00:08. El agente leyó el `README.md`, vio que el ejercicio pide comparar planes sin implementar, y se paró a preguntar por el alcance. Tenía razón: el prompt pedía implementar cuando no tocaba. Se repitió con el encargo correcto.
+
+---
+
+## Prompt 2
+
+**Modelo:** Sonnet 5, medium effort
+**Herramienta:** Claude Code
+
+```
+Coge el ticket de mayor prioridad asignado a mí en el tablero FLOW de Jira, en estado «Por hacer», y prepara el plan de implementación.
+
+Pregunta primero qué tipos de work item existen en el espacio; no supongas los nombres. Lee el ticket entero: resumen, descripción y criterios de aceptación.
+
+Antes de planificar, ve a buscar al código las respuestas que el ticket no da, en vez de inventarlas: reglas de validación, rutas y formato de la API, qué se devuelve al cliente, y qué hay montado ya en el frontend. Anota cada hueco y de dónde sacaste la respuesta.
+
+Presenta el plan con: los archivos que vas a tocar, contados y nombrados, con qué va en cada uno; las decisiones que tomaste por tu cuenta porque el ticket no las cubría, y en qué te apoyaste para cada una; y lo que sigue sin estar claro.
+
+No escribas código. Termina con el plan presentado.
+```
+
+**Qué salió:** corrida de la copia pelada, 00:20–00:25. Es el texto que lleva dentro la skill `/priority-ticket`, escrito a mano porque esa copia no la tiene. Plan de 5 archivos.
+
+---
+
+## Prompt 3
+
+**Modelo:** Sonnet 5, medium effort
+**Herramienta:** Claude Code
+
+```
+Decídelo tú.
+```
+
+**Qué salió:** única intervención de la copia pelada, ~00:22. Paró a preguntar si instalar `react-router-dom` o resolverlo con estado local. Respuesta deliberadamente vacía: el `CLAUDE.md` del otro lado ya cubre ese punto, y orientarla habría sido entregarle a mano lo que se estaba midiendo.
+
+---
+
+## Prompt 4
+
+**Modelo:** Sonnet 5, medium effort
+**Herramienta:** Claude Code
+
+```
+/priority-ticket
+```
+
+**Qué salió:** corrida con harness, 00:26–00:28. Cero intervenciones. Plan de 4 archivos.
