@@ -10,7 +10,7 @@
 |---|---------|-------------|-------------|
 | 1 | Archivos que propuso tocar (contados) | 11 | 9 |
 | 2 | Convenciones del proyecto respetadas / NO respetadas (nómbralas una a una) | Con harness: menciona que el hash del password no se expone. | también lo menciona |
-| 3 | Veces que tuve que intervenir (corregir, aclarar, repetir, parar) | 1 pregunta (shadcn/ui) | 2 preguntas (router y tests) |
+| 3 | Veces que tuve que intervenir (corregir, aclarar, repetir, parar) | 2 preguntas (shadcn + router). | 2 preguntas (router y tests) |
 | 4 | Qué arreglaría a mano antes de enseñárselo a mi equipo | No se ven idénticos; las diferencias que noté (nº de archivos, qué preguntó cada uno) no sé si afectan la calidad final, pero son observables. No sabría precisar qué arreglar a mano sin ayuda técnica. | Prácticamente comparables; diferencias observables pero no sé juzgar su impacto |
 
 ## Parte B — Las tres líneas
