@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"const d=JSON.parse(require('fs').readFileSync(0,'utf8'));const f=d.tool_input&&d.tool_input.file_path;if(f&&/frontend[\\\\/]/i.test(f)){require('child_process').execFileSync(process.execPath,['frontend/node_modules/prettier/bin/prettier.cjs','--write',f],{stdio:'inherit'});}\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

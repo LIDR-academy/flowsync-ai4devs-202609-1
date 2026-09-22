@@ -21,6 +21,18 @@ Borra el ejemplo de abajo cuando escribas el primero.
 ---
 
 ## Prompt 1
+**Modelo:** Claude Sonnet 5
+**Herramienta:** Claude Code
+
+❯ muestra el tiquet de jira con còdigo FLOW-1
+
+todo correcto , a la primera muestra detalle:
+FLOW-1: Implementar login en el fronted
+https://guaitel.atlassian.net/browse/FLOW-1
+...
+
+
+## Prompt 2
 
 **Modelo:** Claude Sonnet 5
 **Herramienta:** Claude Code
@@ -31,3 +43,27 @@ en la pagina principal, debemos tener una sección los tiquets prioritarios en j
 
 funcionó a la primera, me preguntó si queria obtener los tickets via la api de Jira, 
 le indiqué que los obtubiera via el MCP d claude clode, los bajó y los guardó en un json.
+
+
+## PRompt 3
+**Modelo:** Claude Sonnet 5 Medium
+**Herramienta:** Claude Code
+```
+crea una skill priority-ticket
+```
+crea skill.md dentro de \skills\priority-ticket
+
+`
+## PRompt 4
+**Modelo:** Claude Sonnet 5 Medium
+**Herramienta:** Claude Code
+```
+crea una skill commit
+```
+crea skill.md dentro de \skills\commit
+
+## Prompt 5
+
+un hook que formatea el frontend con Prettier
+
+ha aplicado diferents cambios en el codigo, pero o visualizo nada diferente en el front a nivel de UI
