@@ -7,29 +7,26 @@ Esto no es papeleo. Lo que se revisa es **cómo pediste las cosas**, no solo lo 
 resultado flojo con un prompt bueno y un resultado flojo con un prompt vago necesitan feedback
 distinto, y sin este archivo no se distinguen.
 
-## Cómo rellenarlo
-
-- Un apartado `## Prompt N` por cada prompt.
-- **Pega el prompt tal cual lo lanzaste**, dentro del bloque de código, aunque ocupe diez líneas
-  y aunque tenga faltas. No lo reescribas para que quede bien: el que arreglaste mentalmente
-  después no es el que lanzaste.
-- Incluye también los que **no funcionaron**. Suelen ser los más útiles de leer.
-- `Modelo` y `Herramienta` en todos. Si cambiaste de una a otra a mitad, se nota aquí.
-
-Borra el ejemplo de abajo cuando escribas el primero.
-
 ---
 
 ## Prompt 1
 
-**Modelo:** Opus 1M xHigh
-**Herramienta:** Claude Code
+**Modelo:** Gemini 3.8 Flash (High)  
+**Herramienta:** Google Antigravity IDE (Agentic Pair Programmer)
 
 ```
-Este es el ejemplo. Bórralo.
+Revisa el ticket asignado en Jira FLOW-3 ("Implementar login en el frontend"):
+- Descripción: "Como usuario de FlowSync, quiero poder iniciar sesión en la plataforma con mi correo y contraseña para acceder a mis tareas y proyectos de forma segura."
+- Criterios de aceptación:
+  1. Añadir una pantalla o formulario de inicio de sesión accesible para usuarios no autenticados.
+  2. Permitir al usuario ingresar su email y contraseña.
+  3. Mostrar mensajes de error claros y amigables si las credenciales no son válidas o si ocurre un fallo de red.
+  4. Si el login es exitoso, guardar la sesión del usuario y redirigirlo a la vista principal mostrando su nombre/estado.
+  5. El formulario debe contar con validación básica de campos (email obligatorio con formato válido, contraseña obligatoria).
 
-El prompt va aquí dentro, entero y con sus saltos de línea,
-para que se sepa dónde empieza y dónde acaba.
+Genera un plan de implementación técnico para resolver este encargo en el proyecto. No apliques cambios de código todavía; describe los archivos que propones crear o modificar, las capas afectadas, el flujo de autenticación propuesto y los contratos de datos que utilizarás.
 ```
 
-**Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+**Qué salió:**
+- **En la copia pelada (`flowsync-sin-harness`):** Propuso 7 archivos tocando tanto frontend como backend (intentando crear un controlador `auth_controller.ts` y reescribir rutas en `/api/login`), además de proponer instalar `react-router-dom` y `axios` sin verificar el stack existente.
+- **En la copia con harness (`flowsync-ai4devs`):** Leyó de inmediato `AGENTS.md`, respetó la prohibición de tocar `backend/`, inspeccionó los validadores reales en `backend/app/validators/user.ts` (descubriendo el endpoint real `POST /api/v1/auth/login` y el token `oat_`), propuso únicamente 4 archivos en `frontend/` y añadió la ejecución del guardrail `scripts/verify.sh`.
