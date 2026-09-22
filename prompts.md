@@ -22,14 +22,33 @@ Borra el ejemplo de abajo cuando escribas el primero.
 
 ## Prompt 1
 
-**Modelo:** Opus 1M xHigh
+**Modelo:** Sonnet 5
 **Herramienta:** Claude Code
 
 ```
-Este es el ejemplo. Bórralo.
-
-El prompt va aquí dentro, entero y con sus saltos de línea,
-para que se sepa dónde empieza y dónde acaba.
+/init
 ```
 
-**Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+**Qué salió:** Funcionó sin problemas y se generó archivo CLAUDE.md
+
+## Prompt 2
+
+**Modelo:** Sonnet 5
+**Herramienta:** Claude Code
+
+```
+Implementa el story FLOW-1 Inicio de sesion que está en la pizarra de Jira (Realizado con Harness).
+```
+
+**Qué salió:** Creó el plan correspondiente al ticket tomando en cuenta las convenciones del archivo CLAUDE.md y AGENTS.md
+
+## Prompt 3
+
+**Modelo:** Sonnet 5
+**Herramienta:** Claude Code
+
+```
+Implementa el story FLOW-1 Inicio de sesion que está en la pizarra de Jira (Realizado sin Harness).
+```
+
+**Qué salió:** Encontró error en la conexión al MCP de jira por lo que se le tuvo que indicar el contenido del story manualmente.
