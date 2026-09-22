@@ -15,8 +15,7 @@
 
 ## Parte B — Las tres líneas
 
-1. **Qué piezas monté y cuál me costó más de lo esperado:**  **las dos se pararon a preguntar, pero por cosas distintas** — la del harness preguntó por shadcn, la pelada por el router y los tests.
-
+1. **Qué piezas monté y cuál me costó más de lo esperado:**  **las dos se pararon a preguntar, pero por cosas distintas** —**Qué piezas monté y cuál me costó más de lo esperado:** Monté dos piezas, el `CLAUDE.md` y el hook de Prettier (`settings.json`). La que más me costó fue el `settings.json`, porque era algo nuevo para mí: no sabía qué era un hook ni dónde iba el archivo (me confundí con la carpeta `.claude`).
 
 2. **Primera diferencia que vi entre las dos salidas, y en qué me fijé para verla** (qué salió distinto, no cuál fue "mejor"; dónde estaba mirando): La primera diferencia que noté al comparar los dos planes fue el número de archivos: la copia con harness proponía 11 y la copia sin harness 9. En detalle se veían muy parecidos; me fijé en eso al ir contando los archivos de cada lista. Las dos se detuvieron a preguntar antes de dar el plan, pero por cosas distintas (la de harness por shadcn/ui; la de sin harness por el router y los tests). No sabría decir si esos 2 archivos de más le dan más robustez al código o son simplemente más trabajo.
 
