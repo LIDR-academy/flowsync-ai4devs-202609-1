@@ -1,35 +1,31 @@
-# Prompts
+# Prompts — Ejercicio harness FlowSync
 
-Aquí van **todos los prompts que lanzaste** para hacer el ejercicio, en el orden en que los
-lanzaste, con el modelo y la herramienta de cada uno.
+**Modelo:** Opus (Claude Code)
+**Herramienta:** Claude Code (modo plan)
 
-Esto no es papeleo. Lo que se revisa es **cómo pediste las cosas**, no solo lo que salió: un
-resultado flojo con un prompt bueno y un resultado flojo con un prompt vago necesitan feedback
-distinto, y sin este archivo no se distinguen.
+## Encargo 
 
-## Cómo rellenarlo
+Título: Iniciar sesión en FlowSync
 
-- Un apartado `## Prompt N` por cada prompt.
-- **Pega el prompt tal cual lo lanzaste**, dentro del bloque de código, aunque ocupe diez líneas
-  y aunque tenga faltas. No lo reescribas para que quede bien: el que arreglaste mentalmente
-  después no es el que lanzaste.
-- Incluye también los que **no funcionaron**. Suelen ser los más útiles de leer.
-- `Modelo` y `Herramienta` en todos. Si cambiaste de una a otra a mitad, se nota aquí.
+Descripción:
+Como usuario de FlowSync, necesito iniciar sesión en la aplicación para
+acceder a mis tareas de forma segura. Hoy no hay forma de entrar desde el
+frontend. Quiero entrar con mis credenciales y que la app me reconozca.
 
-Borra el ejemplo de abajo cuando escribas el primero.
+Criterios de aceptación:
+- El usuario puede iniciar sesión desde la pantalla de login con sus credenciales.
+- Si las credenciales son incorrectas, recibe un aviso claro de qué pasó.
+- Una vez dentro, accede a su espacio de tareas.
 
----
 
-## Prompt 1
+## Copia CON harness
 
-**Modelo:** Opus 1M xHigh
-**Herramienta:** Claude Code
+1. Pegué el encargo de arriba.
+2. El agente preguntó si instalar shadcn/ui o usar CSS propio → elegí la opción 2: CSS propio, sin dependencias nuevas.
+3. El agente preguntó por la navegación (router o no) → elegí la opción 2: render condicional, sin router.
 
-```
-Este es el ejemplo. Bórralo.
+## Copia SIN harness
 
-El prompt va aquí dentro, entero y con sus saltos de línea,
-para que se sepa dónde empieza y dónde acaba.
-```
-
-**Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+1. Pegué el mismo encargo, palabra por palabra.
+2. El agente preguntó por la navegación (router o no) → elegí la opción 2: render condicional, sin router.
+3. El agente preguntó si añadir tests automatizados → elegí la opción 2: solo verificación manual.
