@@ -26,10 +26,12 @@ Borra el ejemplo de abajo cuando escribas el primero.
 **Herramienta:** Claude Code
 
 ```
-Este es el ejemplo. Bórralo.
 
-El prompt va aquí dentro, entero y con sus saltos de línea,
-para que se sepa dónde empieza y dónde acaba.
+Como usuario, quiero autenticar para poder hacer uso de la plataforma
+
+Criterios de aceptación:
+1. La autenticación es con usuario (correo) y password (mínimo de 6 caracteres, con una mayúscula y un caracter especial
+2. El botón de ingreso solo se habilita cuando se ingreso el usuario y password de manera correcta
 ```
 
-**Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+**Qué salió:** tuve que interrumpir por procesamiento extenso y sin aparente fin. Se tuvo que pedir setear un usuario y clave en duro
