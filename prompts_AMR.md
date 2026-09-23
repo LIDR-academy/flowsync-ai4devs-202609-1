@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Prompts
 
 Aquí van **todos los prompts que lanzaste** para hacer el ejercicio, en el orden en que los
@@ -33,3 +34,19 @@ para que se sepa dónde empieza y dónde acaba.
 ```
 
 **Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+=======
+Título:
+Permitir cancelar una sincronización en curso
+
+Descripción:
+Como usuario de FlowSync, quiero poder cancelar una sincronización mientras está
+en progreso para evitar esperar cuando he seleccionado archivos incorrectos o la
+operación tarda demasiado.
+
+Criterios de aceptación:
+- El usuario puede cancelar una sincronización que está en progreso.
+- Al cancelar, la interfaz deja de mostrar la operación como activa.
+- Los archivos ya sincronizados no se eliminan.
+- El usuario recibe una confirmación de que la operación fue cancelada.
+- Una sincronización ya terminada no muestra la opción de cancelar.
+>>>>>>> ecce165 (harness: comparacion con y sin harness, mas prompts)
