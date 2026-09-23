@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | { read -r f; if [ -n \"$f\" ] && printf '%s' \"$f\" | grep -qE '/frontend/.*\\.(ts|tsx|js|jsx|css|json|md)$'; then root=$(git -C \"$(dirname \"$f\")\" rev-parse --show-toplevel 2>/dev/null); bin=\"$root/frontend/node_modules/.bin/prettier\"; [ -x \"$bin\" ] && \"$bin\" --write \"$f\"; fi; } 2>/dev/null || true",
+            "statusMessage": "Formatting frontend file with Prettier..."
+          }
+        ]
+      }
+    ]
+  }
+}
