@@ -47,18 +47,24 @@ setup: check-node ## Deja el proyecto listo para arrancar (idempotente)
 # Los servidores corren en su propio process group (perl setpgrp: 'set -m' no
 # aísla nada en dash sin tty), así 'kill 0' solo alcanza a backend y frontend,
 # nunca a quien lanzó make. Si uno de los dos termina, se para el grupo entero
-# y make sale con error; ante Ctrl+C/TERM, este shell para el grupo.
+# y make sale con error; ante Ctrl+C/TERM/HUP (cerrar el terminal), este shell
+# para el grupo, con SIGKILL si a los 10 s sigue vivo. Al final se barre el
+# grupo con SIGKILL por si queda algún nieto que ignore SIGINT.
 # Se usa SIGINT (lo mismo que Ctrl+C sobre 'npm run dev'): 'ace serve' atrapa
-# SIGTERM, mata su servidor hijo y se queda vivo. stdin a /dev/null para que
-# un proceso en segundo plano no se quede parado (SIGTTIN) al leer del tty.
+# SIGTERM, mata su servidor hijo y se queda vivo. Llega aunque los jobs async
+# de sh hereden SIGINT ignorado porque Node restaura las señales al arrancar.
+# stdin a /dev/null para que un proceso en segundo plano no se quede parado
+# (SIGTTIN) al leer del tty.
 start: check-node ## Levanta backend y frontend a la vez (Ctrl+C para parar ambos)
 	@command -v perl >/dev/null 2>&1 || { echo "Error: 'make start' necesita perl." >&2; exit 1; }
 	@for f in backend/.env backend/node_modules frontend/node_modules; do \
 		[ -e "$$f" ] || { echo "Error: falta $$f, ejecuta 'make setup' primero." >&2; exit 1; }; \
 	done
-	@trap 'trap "" INT TERM; kill -INT -$$pg 2>/dev/null; wait $$pg; exit 130' INT TERM; \
+	@pg=; trap 'trap "" INT TERM HUP; [ -n "$$pg" ] || exit 130; kill -INT -$$pg 2>/dev/null; \
+		perl -e "sleep 10; kill 9, -$$pg" & w=$$!; wait $$pg; kill -KILL $$w 2>/dev/null; \
+		kill -KILL -$$pg 2>/dev/null; exit 130' INT TERM HUP; \
 	perl -e 'setpgrp(0, 0); exec @ARGV or die "exec: $$!"' sh -c ' \
 		(cd backend && npm run dev; echo "backend terminado, parando el resto..." >&2; kill -INT 0) & \
 		(cd frontend && npm run dev; echo "frontend terminado, parando el resto..." >&2; kill -INT 0) & \
 		wait; exit 1' </dev/null & pg=$$!; \
-	wait $$pg
+	wait $$pg; st=$$?; kill -KILL -$$pg 2>/dev/null; exit $$st
