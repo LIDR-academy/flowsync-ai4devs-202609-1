@@ -37,22 +37,28 @@ setup: check-node ## Deja el proyecto listo para arrancar (idempotente)
 	cd frontend && npm install
 	@[ -f backend/.env ] || { cp backend/.env.example backend/.env && echo "Creado backend/.env"; }
 	@[ -f frontend/.env ] || { cp frontend/.env.example frontend/.env && echo "Creado frontend/.env"; }
-	@if grep -Eq '^APP_KEY=.+' backend/.env; then \
+	@if grep -Eq '^APP_KEY=[^[:space:]]' backend/.env; then \
 		echo "APP_KEY ya definida en backend/.env, no se regenera"; \
 	else \
 		cd backend && node ace generate:key; \
 	fi
 	cd backend && node ace migration:run
 
+# Los servidores corren en su propio process group (perl setpgrp: 'set -m' no
+# aísla nada en dash sin tty), así 'kill 0' solo alcanza a backend y frontend,
+# nunca a quien lanzó make. Si uno de los dos termina, se para el grupo entero
+# y make sale con error; ante Ctrl+C/TERM, este shell para el grupo.
+# Se usa SIGINT (lo mismo que Ctrl+C sobre 'npm run dev'): 'ace serve' atrapa
+# SIGTERM, mata su servidor hijo y se queda vivo. stdin a /dev/null para que
+# un proceso en segundo plano no se quede parado (SIGTTIN) al leer del tty.
 start: check-node ## Levanta backend y frontend a la vez (Ctrl+C para parar ambos)
+	@command -v perl >/dev/null 2>&1 || { echo "Error: 'make start' necesita perl." >&2; exit 1; }
 	@for f in backend/.env backend/node_modules frontend/node_modules; do \
 		[ -e "$$f" ] || { echo "Error: falta $$f, ejecuta 'make setup' primero." >&2; exit 1; }; \
 	done
-# Ambos procesos comparten process group con este shell. Ante Ctrl+C/TERM, o
-# si uno de los dos termina, se manda TERM a todo el grupo para no dejar el
-# otro vivo ni huérfanos. El trap se desarma antes de 'kill 0' para que la
-# señal que se reenvía al propio shell no vuelva a disparar el trap en bucle.
-	@trap 'trap - INT TERM; kill 0' INT TERM; \
-	(cd backend && npm run dev; echo "backend se ha detenido, parando frontend..." >&2; kill 0) & \
-	(cd frontend && npm run dev; echo "frontend se ha detenido, parando backend..." >&2; kill 0) & \
-	wait
+	@trap 'trap "" INT TERM; kill -INT -$$pg 2>/dev/null; wait $$pg; exit 130' INT TERM; \
+	perl -e 'setpgrp(0, 0); exec @ARGV or die "exec: $$!"' sh -c ' \
+		(cd backend && npm run dev; echo "backend terminado, parando el resto..." >&2; kill -INT 0) & \
+		(cd frontend && npm run dev; echo "frontend terminado, parando el resto..." >&2; kill -INT 0) & \
+		wait; exit 1' </dev/null & pg=$$!; \
+	wait $$pg
