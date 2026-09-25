@@ -16,20 +16,38 @@ distinto, y sin este archivo no se distinguen.
 - Incluye también los que **no funcionaron**. Suelen ser los más útiles de leer.
 - `Modelo` y `Herramienta` en todos. Si cambiaste de una a otra a mitad, se nota aquí.
 
-Borra el ejemplo de abajo cuando escribas el primero.
-
 ---
 
 ## Prompt 1
 
-**Modelo:** Opus 1M xHigh
-**Herramienta:** Claude Code
+**Modelo:** High Fast
+**Herramienta:** Cursor (copia con harness)
 
 ```
-Este es el ejemplo. Bórralo.
-
-El prompt va aquí dentro, entero y con sus saltos de línea,
-para que se sepa dónde empieza y dónde acaba.
+Implementa el ticket FLOW-2
 ```
 
-**Qué salió:** (opcional, una línea) funcionó a la primera / tuve que insistir / me inventó una ruta que no existe.
+**Qué salió:** leyó Jira y montó el registro solo en el frontend, contra la API que ya existía.
+
+---
+
+## Prompt 2
+
+**Modelo:** High Fast
+**Herramienta:** Cursor (copia sin harness)
+
+```
+Como visitante quiero crear una cuenta en FlowSync para empezar a usar la herramienta con mi equipo. Ahora mismo no hay forma de registrarse desde la web.
+
+Criterios de aceptación:
+
+Hay un flujo para crear cuenta con email y contraseña.
+
+Si el registro va bien, quedo en condiciones de usar la app (o al menos veo que la cuenta se creó).
+
+Si falta un dato o el email no vale, me lo explican sin jerga técnica.
+
+No pedimos datos de más: con lo mínimo para tener cuenta es suficiente.
+```
+
+**Qué salió:** también sacó un flujo de registro, pero tocó backend (validador y mensajes) y creó muchos archivos en `frontend/src/auth/`. El servidor de Vite en 5174 se abortó al final.
